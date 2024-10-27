@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Number Status</title>
+</head>
+<body>
+    <h1>Check Number Status</h1>
+
+    <label for="numbersInput">Enter numbers separated by commas:</label>
+    <input type="text" id="numbersInput">
+    <button onclick="checkNumbers()">Check Status</button>
+    <p id="statusMessage"></p>
+
+    <script>
+        function checkNumberStatus(number) {
+            if (number > 0) {
+                return "Positive";
+            } else if (number < 0) {
+                return "Negative";
+            } else {
+                return "Zero";
+            }
+        }
+
+        function checkNumbers() {
+            const numbersInput = document.getElementById('numbersInput').value;
+            const numbersArray = numbersInput.split(",").map(Number);
+            let statusText = "";
+
+            for (let number of numbersArray) {
+                const status = checkNumberStatus(number);
+                statusText += `The status of the number ${number} is ${status}.<br>`;
+            }
+
+            const statusMessage = document.getElementById("statusMessage");
+            statusMessage.innerHTML = statusText;
+        }
+    </script>
+</body>
+</html>
